@@ -9,6 +9,7 @@
     - LAPTOP
     - INSTALASI DEBIAN 10 UNTUK 2 VM
     - JARINGAN UNTUK REPO MIRROR
+    - PADA SAAT INSTALASI PILIH SSH AGAR NANTI TIDAK MENGINSTALL PACAKAGE SSH
 
 # LANGKAH PERTAMA
     
@@ -19,6 +20,8 @@
             address 10.10.10.3/24
             gateway 10.10.10.0
     - Untuk Konfigurasi masuk kedalam nano /etc/network/interfaces
+    - jangan lupa untuk setiap konfigurasi selalu merestart package nya
+    - dan jangan lupa untuk konfigurasi ssh ya. (UNTUK KONFIGURASI BANYAK DI BLOGSITE)
 
 # LANGKAH KEDUA
 
@@ -29,5 +32,32 @@
         masuk kan salah satu repo mirror kedalam nya dan taruh pada bagian bawah sendiri
    ![image](https://github.com/user-attachments/assets/498aaf9c-e247-4581-9527-0f16cbfd48cc)
    - setelah itu lakukan apt update dan upgrade
+
+# LANGKAH KETIGA VM 1 (WEBSERVER)
+
+   - karena telah menginstall ssh kita tidak perlu bingung untuk menstransfer file
+   - install winscp pada laptop
+   - login dengan ip, username dan password anda
+   - upload folder web ada ke debian
+
+# LANGKAH KEEMPAT VM 1 (WEBSERVER)
+
+   - dari tempat anda mengupload tadi pindah folder anda kedalam
+      - /var/www/folder anda
+      - lalu jangan lupa untuk memberikan permission
+      - chmod 777 /var/www/folder
+      - chown -R www-data:www-data /var/www/folder
+
+# LANGKAH KELIMA VM 1 (WEBSERVER)
+   - sebenarnya ada 2 cara untuk mengaktifkan foldernya
+   - yang pertama anda bisa membuat conf anda sendiri seperti :
+   - nano /etc/apache2/sites-avaible/namafile.conf atau mencopy dari 000-default.conf
+   - cp 000-default.conf namafile.conf
+   - nantinya rubah folder dalam menjadi seperti foto dibawah ini
+   - ![image](https://github.com/user-attachments/assets/cd613691-9d48-4ed2-8972-08d225cd3cd8)
+   - jika sudah a2enmod rewrite
+   - a2ensite namafile.conf
+   - dan restart apache anda.
+
 
 
