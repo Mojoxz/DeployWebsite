@@ -13,15 +13,15 @@
 
 # LANGKAH PERTAMA
     
-    - MENKONFIGURASI JARINGAN PADA DEBIAN 
-    - VM1 (WEBSERVER)
+   - MENKONFIGURASI JARINGAN PADA DEBIAN 
+     - VM1 (WEBSERVER)
         ENP0S3 UNTUK INTERNET (dhcp)
         ENP0S8 SEBAGAI IP STATIC YANG NANTINYA TERHUBUNG DENGAN DATABASE
             address 10.10.10.3/24
             gateway 10.10.10.0
-    - Untuk Konfigurasi masuk kedalam nano /etc/network/interfaces
-    - jangan lupa untuk setiap konfigurasi selalu merestart package nya
-    - dan jangan lupa untuk konfigurasi ssh ya. (UNTUK KONFIGURASI BANYAK DI BLOGSITE)
+   - Untuk Konfigurasi masuk kedalam nano /etc/network/interfaces
+   - jangan lupa untuk setiap konfigurasi selalu merestart package nya
+   - dan jangan lupa untuk konfigurasi ssh ya. (UNTUK KONFIGURASI BANYAK DI BLOGSITE)
 
 # LANGKAH KEDUA
 
