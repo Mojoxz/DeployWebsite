@@ -67,6 +67,25 @@
    - jika web anda sudah terdapat oprasi if else untuk mengecek database maka akan muncul
    - ![image](https://github.com/user-attachments/assets/8e25e817-dd14-4082-b442-4cf4a714c940)
 
+# LANGKAH KESATU VM 2 (DATABASE)
+   
+   - untuk langkah pertama ini sama seperti konfigurasi pada vm 1
+   - bedanya hanya pada ip
+     ENP0S3 UNTUK INTERNET (dhcp)
+     ENP0S8 SEBAGAI IP STATIC YANG NANTINYA TERHUBUNG DENGAN DATABASE
+            address 10.10.10.4/24
+            gateway 10.10.10.0
+   - Untuk Konfigurasi masuk kedalam nano /etc/network/interfaces
+   - dan jangan lupa untuk restart networknya
+
+
+# LANGKAH KETIGA VM 2 (DATABASE)
+
+   # install mysql server dan mariadb server
+   - apt install mariadb-server mariadb-client -y
+   # amankan instalasi
+   - mysql_secure_installation
+
 
 
 
