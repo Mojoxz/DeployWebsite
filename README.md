@@ -24,7 +24,7 @@
 
    - Karena disini saya mementingkan kemudahan dalam menginstall package, saya menggunakan repo mirror
    untuk repo mirror bisa dilihat di https://www.linuxsec.org/2019/08/repository-lokal-debian-buster.html
-    - konfigurasinya seperti ini :
+   - konfigurasinya seperti ini :
         nano /etc/apt/source.list
         masuk kan salah satu repo mirror kedalam nya dan taruh pada bagian bawah sendiri
    ![image](https://github.com/user-attachments/assets/498aaf9c-e247-4581-9527-0f16cbfd48cc)
