@@ -58,6 +58,15 @@
    - jika sudah a2enmod rewrite
    - a2ensite namafile.conf
    - dan restart apache anda.
+   - setelah semua selesai jangan lupa merubah file koneksi database anda sesuai dengan yang kalian konfigurasi
+   - ![image](https://github.com/user-attachments/assets/31376c03-e0f3-4a9e-b6d5-5621f20f8be6)
+
+# LANGKAH KEENAM VM 1 (WEBSERVER)
+   - Pengujian pada laptop client
+   - buka di browser sesuai dengan ip yang anda gunakan
+   - jika web anda sudah terdapat oprasi if else untuk mengecek database maka akan muncul
+   - ![image](https://github.com/user-attachments/assets/8e25e817-dd14-4082-b442-4cf4a714c940)
+
 
 
 
