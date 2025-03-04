@@ -55,13 +55,13 @@
 # LANGKAH KELIMA VM 1 (WEBSERVER)
    - sebenarnya ada 2 cara untuk mengaktifkan foldernya
    - yang pertama anda bisa membuat conf anda sendiri seperti :
-   - nano /etc/apache2/sites-avaible/namafile.conf atau mencopy dari 000-default.conf
-   - cp 000-default.conf namafile.conf
+   -       nano /etc/apache2/sites-avaible/namafile.conf atau mencopy dari 000-default.conf
+   -       cp 000-default.conf namafile.conf
    - nantinya rubah folder dalam menjadi seperti foto dibawah ini
    - ![image](https://github.com/user-attachments/assets/cd613691-9d48-4ed2-8972-08d225cd3cd8)
-   - jika sudah a2enmod rewrite
-   - a2ensite namafile.conf
-   - dan restart apache anda.
+   -       jika sudah a2enmod rewrite
+   -       a2ensite namafile.conf
+   -       dan restart apache anda.
    - setelah semua selesai jangan lupa merubah file koneksi database anda sesuai dengan yang kalian konfigurasi
    - ![image](https://github.com/user-attachments/assets/31376c03-e0f3-4a9e-b6d5-5621f20f8be6)
 
@@ -74,11 +74,11 @@
 # LANGKAH KESATU VM 2 (DATABASE)
    
    - untuk langkah pertama ini sama seperti konfigurasi pada vm 1
-   - bedanya hanya pada ip
-     ENP0S3 UNTUK INTERNET (dhcp)
-     ENP0S8 SEBAGAI IP STATIC YANG NANTINYA TERHUBUNG DENGAN DATABASE
-            address 10.10.10.4/24
-            gateway 10.10.10.0
+   -       bedanya hanya pada ip
+           ENP0S3 UNTUK INTERNET (dhcp)
+           ENP0S8 SEBAGAI IP STATIC YANG NANTINYA TERHUBUNG DENGAN DATABASE
+               address 10.10.10.4/24
+               gateway 10.10.10.0
    - Untuk Konfigurasi masuk kedalam nano /etc/network/interfaces
    - dan jangan lupa untuk restart networknya
 
@@ -86,15 +86,59 @@
 # LANGKAH KETIGA VM 2 (DATABASE)
 
    # install mysql server dan mariadb server
-   - apt install mariadb-server mariadb-client -y
+   -       apt install mariadb-server mariadb-client -y
    # amankan instalasi
-   - mysql_secure_installation
+   -       mysql_secure_installation
    lalu konfigurasi seperti ini
    - Tekan Enter untuk password root (kosong)
    - Ketik Y untuk mengatur password root
    - Masukkan password baru dan konfirmasi
    - Ketik Y untuk semua pertanyaan berikutnya
+   # Konfigurasi MARIADB Untuk menerima Koneski remote
+   -       nano /etc/mysql/mariadb.conf.d/50-server.cnf
+   -       ubah brind address 127.0.0.1 menjadi 0.0.0.0
+   -       restart mariadb
 
+# LANGKAH KEEMPAT VM 2 (DATABASE)
 
+   # Login mysql dan buat database
+   -      mysql -u root -p
+          CREATE DATABASE databasemu;
+          CREATE USER 'usermu'@'%' IDENTIFIED BY 'password_anda';
+          GRANT ALL PRIVILEGES ON databasemu.* TO 'usermu'@'%';
+          FLUSH PRIVILEGES;
+          EXIT;
+   # Install PHPMYADMIN
+   -      apt install apache2 php php-mysql php-mbstring php-zip php-gd php-json php-curl wget unzip -y php-xml
+          cd /tmp
+          wget https://files.phpmyadmin.net/phpMyAdmin/5.1.1/phpMyAdmin-5.1.1-all-languages.zip
+          unzip phpMyAdmin-5.1.1-all-languages.zip
+          mv phpMyAdmin-5.1.1-all-languages /usr/share/phpmyadmin
+   # buat direktori yang dibutuhkan dan file konfigurasinya
+   -      mkdir -p /usr/share/phpmyadmin/tmp
+          chmod 777 /usr/share/phpmyadmin/tmp
+          cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/config.inc.php
+          nano /usr/share/phpmyadmin/config.inc.php
+   # ubah baris
+          $cfg['blowfish_secret'] = 'baris_karakter_acak_32_atau_lebih';    
+          $cfg['Servers'][$i]['host'] = 'localhost';
+   # buat file konfigurasi apache
+         nano /etc/apache2/conf-available/phpmyadmin.conf lalu isi dengan :
+         Alias /phpmyadmin /usr/share/phpmyadmin
+
+         <Directory /usr/share/phpmyadmin>
+             Options SymLinksIfOwnerMatch
+             DirectoryIndex index.php
+             AllowOverride All
+             Require all granted
+         </Directory>
+   # aktifkan konfigurasi
+            a2enconf phpmyadmin
+            systemctl restart apache2
+   - lalu login dengan ip debianmu cont 192.168.12.2/phpmyadmin
+
+# NB SETIAP KONGIGURASI HARAP LOGIN DENGAN ROOT
+   
+            
 
 
