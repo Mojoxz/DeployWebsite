@@ -138,7 +138,12 @@
    - lalu login dengan ip debianmu cont 192.168.12.2/phpmyadmin
 
 # NB SETIAP KONGIGURASI HARAP LOGIN DENGAN ROOT
-   
+   ![image](https://github.com/user-attachments/assets/3bb6e8e0-e716-40cd-945a-31fa6119e2ac)
+   ![image](https://github.com/user-attachments/assets/85a47b62-7a59-4aee-aab3-d7ced57ecd42)
+
+   dapat dilihat ip dari webserver dan ip dari database berbeda.
+
+
             
 
 
