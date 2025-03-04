@@ -85,6 +85,11 @@
    - apt install mariadb-server mariadb-client -y
    # amankan instalasi
    - mysql_secure_installation
+   lalu konfigurasi seperti ini
+   - Tekan Enter untuk password root (kosong)
+   - Ketik Y untuk mengatur password root
+   - Masukkan password baru dan konfirmasi
+   - Ketik Y untuk semua pertanyaan berikutnya
 
 
 
