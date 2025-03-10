@@ -49,7 +49,7 @@
    - dari tempat anda mengupload tadi pindah folder anda kedalam
       -       /var/www/folder anda
       - lalu jangan lupa untuk memberikan permission
-      -       chmod 777 /var/www/folder
+      -       chmod -R 777 /var/www/folder
       -       chown -R www-data:www-data /var/www/folder
 
 # LANGKAH KELIMA VM 1 (WEBSERVER)
