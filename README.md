@@ -43,6 +43,8 @@
    - install winscp pada laptop
    - login dengan ip, username dan password anda
    - upload folder web ada ke debian
+   - install package apache
+   -       apt install -y apache2 php php-mysql libapache2-mod-php php-cli php-common php-mbstring php-gd php-curl php-xml php-zip
 
 # LANGKAH KEEMPAT VM 1 (WEBSERVER)
 
